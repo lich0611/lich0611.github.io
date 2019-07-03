@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-07-03T19:41:59+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">大川的博客</title><subtitle>I’m a creator by nature and I wanted to be better at it.</subtitle><entry><title type="html">欢迎使用Welcome to Jekyll!</title><link href="http://localhost:4000/jekyll/update/2019/07/03/welcome-to-jekyll.html" rel="alternate" type="text/html" title="欢迎使用Welcome to Jekyll!" /><published>2019-07-03T17:51:49+08:00</published><updated>2019-07-03T17:51:49+08:00</updated><id>http://localhost:4000/jekyll/update/2019/07/03/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2019/07/03/welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+
+&lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
+
+&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Tom'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><summary type="html">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.</summary></entry><entry><title type="html">第一篇日志</title><link href="http://localhost:4000/jekyll/update/2019/07/02/01-0001.html" rel="alternate" type="text/html" title="第一篇日志" /><published>2019-07-02T13:51:49+08:00</published><updated>2019-07-02T13:51:49+08:00</updated><id>http://localhost:4000/jekyll/update/2019/07/02/01-0001</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2019/07/02/01-0001.html">&lt;h2 id=&quot;为什么要搭建一个博客&quot;&gt;为什么要搭建一个博客？&lt;/h2&gt;
+&lt;p&gt;国内的博客站，新浪博客，简书等等，太丑陋了。广告和垃圾内容充斥其中。“挽回你男友的5个方法”，“女人有这3个特征，说明心里没有你”，“5个动作让你远离职场天花板”，这些垃圾内容我看的都快吐了。我想有一个比较纯净的环境来展示内容，是我的读者能沉浸在我的文字当中，不受别的干扰。&lt;/p&gt;
+
+&lt;p&gt;国外的博客站，比如Wordpress，Medium，我也尝试过。确实没有国内网站的问题。但是有两个主要的缺点，一是需要科学上网，二是对中文的支持不太好。他们的页面设计，英文的看起来就还不错，但是换成中文就很丑。&lt;/p&gt;
+
+&lt;p&gt;我之前已经基于Flask搭建好了一个博客，flask的好处就是比较自由，想要什么功能自己写就行，坏处也是比较自由，要做一些事来重新发明轮子。&lt;/p&gt;
+
+&lt;p&gt;这个时候&lt;a href=&quot;https://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt;吸引到我的注意了。&lt;/p&gt;
+
+&lt;p&gt;Jekyll的想法很吸引我，让用户的焦点聚焦在内容上，而不是别的数据库、发布之类的chores上。这正是我需要的。&lt;/p&gt;
+
+&lt;p&gt;所以在此记录一下搭建博客的过程，记录一下踩过的坑，记录一下作为创造者的初心。&lt;/p&gt;
+
+&lt;p&gt;Here we go.&lt;/p&gt;
+
+&lt;h2 id=&quot;步骤&quot;&gt;步骤&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;Install a full &lt;a href=&quot;https://jekyllrb.com/docs/installation/&quot;&gt;Ruby development environment&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Install Jekyll and &lt;a href=&quot;https://jekyllrb.com/docs/ruby-101/#bundler&quot;&gt;bundler&lt;/a&gt;  &lt;a href=&quot;https://jekyllrb.com/docs/ruby-101/#gems&quot;&gt;gems&lt;/a&gt; gem install jekyll bundler&lt;/li&gt;
+  &lt;li&gt;Create a new Jekyll site at./myblogjekyll new myblog&lt;/li&gt;
+  &lt;li&gt;Change into your new directorycd myblog&lt;/li&gt;
+  &lt;li&gt;Build the site and make it available on a local serverbundle exec jekyll serve&lt;/li&gt;
+  &lt;li&gt;Now browse to &lt;a href=&quot;http://localhost:4000/&quot;&gt;http://localhost:4000&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;安装ruby环境&quot;&gt;安装Ruby环境&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;安装 Homebrew —— 把安装命令粘贴进terminal就行，terminal卡住了几次。这一步教我几件事：
+    &lt;ol&gt;
+      &lt;li&gt;作为一个用户，要耐心；&lt;/li&gt;
+      &lt;li&gt;作为一个产品，在可能卡住的时候，要提示用户：你要开始等了&lt;/li&gt;
+      &lt;li&gt;学会了怎么在terminal里面科学上网
+        &lt;ol&gt;
+          &lt;li&gt;curl -v ip.gs —— 查看代理状态&lt;/li&gt;
+          &lt;li&gt;科学上网工具打开全局模式&lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;安装ruby&quot;&gt;安装Ruby&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;brew install ruby&lt;/li&gt;
+  &lt;li&gt;在“.bash_profile”中添加“export PATH=/usr/local/opt/ruby/bin:$PATH”，如果没有“.bash_profile”的话，就在目录下用touch新建一个&lt;/li&gt;
+  &lt;li&gt;安装rbenv。Stackoverflow上的大哥强烈建议安装这个，感觉和python的虚拟环境差不多。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;安装jekyll&quot;&gt;安装Jekyll&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;gem install —user-install bundler jekyll&lt;/li&gt;
+  &lt;li&gt;用ruby -v拿到ruby版本&lt;/li&gt;
+  &lt;li&gt;将“export PATH=$HOME/.gem/ruby/X.X.0/bin:$PATH”写进bash，将其中的X替换为版本号&lt;/li&gt;
+  &lt;li&gt;如果更新的ruby，那么bash里面也要更新&lt;/li&gt;
+  &lt;li&gt;gem install jekyll bundler&lt;/li&gt;
+&lt;/ol&gt;</content><author><name></name></author><summary type="html">为什么要搭建一个博客？ 国内的博客站，新浪博客，简书等等，太丑陋了。广告和垃圾内容充斥其中。“挽回你男友的5个方法”，“女人有这3个特征，说明心里没有你”，“5个动作让你远离职场天花板”，这些垃圾内容我看的都快吐了。我想有一个比较纯净的环境来展示内容，是我的读者能沉浸在我的文字当中，不受别的干扰。</summary></entry></feed>
