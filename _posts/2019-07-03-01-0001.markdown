@@ -3,6 +3,8 @@ layout: post
 title:  "第一篇日志"
 date:   2019-07-02 13:51:49 +0800
 categories: jekyll update
+comments: true
+
 ---
 
 大家好，欢迎来到我的博客。
