@@ -4,48 +4,60 @@ title:  "第一篇日志"
 date:   2019-07-02 13:51:49 +0800
 categories: jekyll update
 ---
+大家好，欢迎来到我的博客。
+
 ## 为什么要搭建一个博客？
-国内的博客站，新浪博客，简书等等，太丑陋了。广告和垃圾内容充斥其中。“挽回你男友的5个方法”，“女人有这3个特征，说明心里没有你”，“5个动作让你远离职场天花板”，这些垃圾内容我看的都快吐了。我想有一个比较纯净的环境来展示内容，是我的读者能沉浸在我的文字当中，不受别的干扰。
+我本身是一个码字爱好者，在Bear上已经写了不少东西，但是写来写去都是给自己看。
+某一天，我将其中一篇日志给了好友看，之后产生了一些有趣的对话。我决定应该将我的部分笔记内容拿出来和大家交流。这样也有利于我进行系统化的输出。于是萌生了把自己写的东西发到网上的想法。于是开始了不断尝试博客站的历程。
 
-国外的博客站，比如Wordpress，Medium，我也尝试过。确实没有国内网站的问题。但是有两个主要的缺点，一是需要科学上网，二是对中文的支持不太好。他们的页面设计，英文的看起来就还不错，但是换成中文就很丑。
+国内的博客站，包括新浪博客，简书等等，说实话，很丑陋。无数广告和垃圾内容充斥其中。“挽回你男友的5个方法”，“女人有这3个特征，说明心里没有你”，“5个动作让你远离职场天花板”。拜托……这些垃圾内容我看的要吐了。所以我想有一个比较纯净的环境来展示内容，以便我的读者（如果我真的有什么读者的话）能沉浸在我的文字当中，不受别的干扰。
 
-我之前已经基于Flask搭建好了一个博客，flask的好处就是比较自由，想要什么功能自己写就行，坏处也是比较自由，要做一些事来重新发明轮子。
+国外的博客站，比如Wordpress，Medium，我也尝试过。在国内网站面临的问题上表现要好很多。但是有两个主要的缺点：一是需要科学上网，二是对中文的支持不太好。他们的页面设计，如果是英文的文章看起来就还不错，一旦换成中文就会有些别扭。
 
-这个时候[Jekyll][jekyll]吸引到我的注意了。
+如果自己搭一个博客会怎么样？我开始有了这个想法。
+我本身会写一点点Python。一直以来都在写一些小脚本，比如合并两个excel（公司的客户要导入会员）之类的。在对比了Flask和Django之后，认为如果我要做这么一个轻量的小博客，似乎Flask灵活一点。
+于是开始学习教学视频，并且发布到了heroku上面。（感兴趣可以参见[我的第一个Flask博客][flaskblog]）
+Flask的好处就是比较自由，想要什么功能自己写就行，坏处也是比较自由，要做一些事来重新发明轮子。
+虽然通过写了这个小app，我对于网页开发有了更深的认识，但是我也不太想自己研究前端后段，完全自己做一个博客。
 
-Jekyll的想法很吸引我，让用户的焦点聚焦在内容上，而不是别的数据库、发布之类的chores上。这正是我需要的。
+就在此时[Jekyll][jekyll]吸引到了我的注意。
 
-所以在此记录一下搭建博客的过程，记录一下踩过的坑，记录一下作为创造者的初心。
+Jekyll的想法很吸引我，让用户的焦点聚焦在内容上，而不是别的数据库、发布之类的chores上。这正是我需要的。后来对比了松茸给我推荐了Hexo等site generator，感觉Jekyll的主题商店里面的主体似乎漂亮一些（非常肤浅的原因）。于是说干就干，Jekyll UP！
+
+在此记录一下搭建博客的过程，记录一下踩过的坑，也记录一下作为创造者不断卡住后不断尝试的决心。
 
 Here we go.
 
-## 步骤
-1. Install a full [Ruby development environment](https://jekyllrb.com/docs/installation/)
-2. Install Jekyll and [bundler](https://jekyllrb.com/docs/ruby-101/#bundler)  [gems](https://jekyllrb.com/docs/ruby-101/#gems) gem install jekyll bundler
-3. Create a new Jekyll site at./myblogjekyll new myblog
-4. Change into your new directorycd myblog
-5. Build the site and make it available on a local serverbundle exec jekyll serve
-6. Now browse to [http://localhost:4000][local]
-
-### 安装Ruby环境
+### 1.安装Ruby环境
 1. 安装 Homebrew —— 把安装命令粘贴进terminal就行，terminal卡住了几次。这一步教我几件事：
 	1. 作为一个用户，要耐心；
 	2. 作为一个产品，在可能卡住的时候，要提示用户：你要开始等了
 	3. 学会了怎么在terminal里面科学上网
 		1. curl -v ip.gs —— 查看代理状态
 		2. 科学上网工具打开全局模式
-    
-### 安装Ruby
+
+### 2.安装Ruby
 1. brew install ruby
 2. 在“.bash_profile”中添加“export PATH=/usr/local/opt/ruby/bin:$PATH”，如果没有“.bash_profile”的话，就在目录下用touch新建一个
 3. 安装rbenv。Stackoverflow上的大哥强烈建议安装这个，感觉和python的虚拟环境差不多。
 
-### 安装Jekyll
+### 3.安装Jekyll
 1. gem install —user-install bundler jekyll
 2. 用ruby -v拿到ruby版本
 3. 将“export PATH=$HOME/.gem/ruby/X.X.0/bin:$PATH”写进bash，将其中的X替换为版本号
 4.  如果更新的ruby，那么bash里面也要更新
 5. gem install jekyll bundler
 
+做完上面这几部之后，用Jekyll生成一个网站，就可以在[本地][local]测试了。
+后来我找了一下Jekyll的主题商店，安装了一个主题，很符合我对于简洁清晰的要求。
+设置一下Github Page，这个博客就正式上线了！
+
+今后也许我会探索一下基于Jekyll的开发，让这个博客离我设想的样子更近。
+
+> I still wanted to make things, to code, to think — the architecture, to step back and see the moving parts work together. That’s the one part of me that’s always > been consistent.
+>
+> I’m a creator by nature and I wanted to be better at it.
+
 [jekyll]:https://jekyllrb.com
 [local]:http://localhost:4000/
+[flaskblog]:https://ldch97.herokuapp.com
