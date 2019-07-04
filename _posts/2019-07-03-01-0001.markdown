@@ -4,9 +4,12 @@ title:  "第一篇日志"
 date:   2019-07-02 13:51:49 +0800
 categories: jekyll update
 ---
+
 大家好，欢迎来到我的博客。
+
 ---
 ## 1、为什么要搭建一个博客？
+
 我本身是一个码字爱好者，在Bear上已经写了不少东西，但是写来写去都是给自己看。
 
 某一天，我将其中一篇日志给了好友看，之后产生了一些有趣的对话。我决定应该将我的部分笔记内容拿出来和大家交流。这样也有利于我进行系统化的输出。于是萌生了把自己写的东西发到网上的想法。于是开始了不断尝试博客站的历程。
@@ -32,6 +35,7 @@ Here we go.
 ---
 
 ### 1. 安装Ruby环境
+
 1. 安装 Homebrew —— 把安装命令粘贴进terminal。terminal卡住了几次。这一步教我几件事：
 	1. 作为一个用户，要耐心；
 	2. 作为一个产品，在可能卡住的时候，要提示用户：你要开始等了
@@ -45,6 +49,7 @@ Here we go.
 	3. 安装rbenv。Stackoverflow上的大哥强烈建议安装这个，感觉和python的虚拟环境差不多。
 
 ### 2. 安装Jekyll
+
 1. gem install —user-install bundler jekyll
 2. 用ruby -v拿到ruby版本
 3. 将“export PATH=$HOME/.gem/ruby/X.X.0/bin:$PATH”写进bash，将其中的X替换为版本号
@@ -57,7 +62,7 @@ Here we go.
 
 ---
 
-今后也许我会探索一下基于Jekyll的开发，让这个博客离我设想的样子更近。
+今后也许我会探索一下基于Jekyll的开发，让这个博客离我设想的样子更近。最后，用一段别人的话结尾。
 
 
 > I still wanted to make things, to code, to think — the architecture, to step back and see the moving parts work together. That’s the one part of me that’s always > been consistent.
