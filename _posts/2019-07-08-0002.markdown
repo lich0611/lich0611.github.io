@@ -1,0 +1,91 @@
+---
+layout: post
+title:  "Python怎么面对对象？"
+date:   2019-07-08 20:33:49 +0800
+categories: jekyll update
+comments: true
+
+---
+
+当时在看Python教程的时候，虽然理解class的含义，但是对于怎么使用还是很迷惑。加上里面一些特殊的method，“__init__”这些对于初学者来说有些难懂。于是去看了Youtube上的视频，看到一个很好的视频，说的很明白，有一点醒悟的感觉。在这里记录一下目前对class和OOP的理解。
+
+---
+### Instance variables
+在一开始，def一个init（init在每一次创建instance的时候都会运行），来接受传入的参数，Python默认第一个参数是instance自己（self），你可以改成任何名字，不过还是叫self比较好，例如：
+
+{% highlight python %}
+class Employee:
+	def __init__(self, first, last, pay):
+		self.first = first
+		self.last = last
+		self.pay = pay
+		self.email = first + ’.’ + last + ‘@company.com’
+{% endhighlight %}
+
+如果要创建一个method，可以在class中def一个方法，例如
+{% highlight python %}
+class Employee:
+	def __init__(self, first, last, pay):
+		self.first = first
+		self.last = last
+		self.pay = pay
+		self.email = first + ’.’ + last + ‘@company.com’
+	def fullname(self):
+		return '{} {}'.format(self.first, self.last)
+{% endhighlight %}
+
+为什么经常见到def后面带一个self参数？
+因为在python执行class的instance的时候，
+如果不加，则在运行method的时候会报错：传入了一个参数（arguement）
+这个参数就是instance自己，所以在创建method的时候至少要接受一个self参数。
+至于为什么会传入一个自己的参数？因为python在执行的时候会转换为’Class.method(instance)’这样的形式运行，所以可以看到默认会传入instance。
+
+### Class Variables
+
+{% highlight python %}
+class Employee:
+	raise_amount = 1.04
+{% endhighlight %}
+如果要在method中使用到class variables
+需要通过Class或者Instance
+为什么instance可以访问到class variables？
+因为python会先看instance是否包含这个变量（attribute），如果没有，则去看class或者继承的class
+
+如果执行emp_1.raise_amount，则会在emp1这个instance下创建一个raise_amount attribute，所以并不会更改class variable，别的人的raise amount还是旧的数值
+那么如何通过方法去变更class method？见下一章
+
+### Class Method & Static Method
+regular method自动把instance作为第一个变量
+class method自动把class作为第一个变量，例如：
+{% highlight python %}
+@classmethod
+def set_raise_amount(cls, amount):
+	pass
+{% endhighlight %}
+这样就可以通过这个method来更改class variables
+经常通过class method作为alternative constructor
+最后return这个instance就行
+
+regular method会自动传入self
+class method 会自动传入cls
+static method什么都不传
+
+比如在上面的例子里面加一个“根据日期判断是不是weekday”
+如果method不用cls也不用self，那么他就应该是一个static method
+
+### Inheritance
+在init中super().__inti__()，例如：
+{% highlight python %}
+class Manager(Employee):
+	def __init__(self, first, last, pay, employees=None):
+		super().__init__(first, last, pay)
+		if employees is None:
+			self.employees = []
+		else:
+			employees = employees
+{% endhighlight %}
+
+可以指定某个传入参数的默认值，例如上面的employees=None
+
+python内建了两个方法叫做 issubclass和isinstance
+可以用来判断某个variable/class是不是instance和subclass
