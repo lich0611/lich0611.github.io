@@ -7,11 +7,27 @@ comments: true
 
 ---
 
-当时在看Python教程的时候，虽然理解class的含义，但是对于怎么使用还是很迷惑。加上里面一些特殊的method，“__init__”这些对于初学者来说有些难懂。于是去看了Youtube上的视频，看到一个很好的视频，说的很明白，有一点醒悟的感觉。在这里记录一下目前对class和OOP的理解。
+当时在看Python教程的时候，虽然理解class的含义，但是对于怎么使用还是很迷惑。加上里面一些特殊的method，“__init__”这些对于初学者来说有些难懂。
+后来看Youtube的时候，发现了一个优秀的作者，叫Corey Schafer，把这一部分说的很明白，让我有了一点醒悟的感觉。
+所以在这里记录一下目前对class和OOP的理解，下面是会覆盖到的主题
+
+*	Class & Instance
+* Class Variables
+* Class Method & Static Method
+* Inheritance
+* Special Method（Magic/Dunder）
+* Property Decorators
 
 ---
-### Instance variables
-在一开始，def一个init（init在每一次创建instance的时候都会运行），来接受传入的参数，Python默认第一个参数是instance自己（self），你可以改成任何名字，不过还是叫self比较好，例如：
+## Class & Instance
+
+Class可以理解为，想要制作东西的蓝图，或者说模子。通过蓝图造出来的实际的东西就叫instance。
+
+在大多数class的一开始，都会有一个function（因为这个function在class里，也可以叫method）叫“init”。
+init在每一次创建instance的时候都会运行，来接受传入的参数。
+Python会默认第一个参数是instance自己（一般叫self，你可以改成任何名字，不过还是叫self比较好）
+
+下面举一个例子，来描述下公司的员工，那么可以创建一个class叫Employee（并且通过init来让class接受姓名，工资这几个参数）：
 
 {% highlight python %}
 class Employee:
@@ -22,59 +38,82 @@ class Employee:
 		self.email = first + ’.’ + last + ‘@company.com’
 {% endhighlight %}
 
-如果要创建一个method，可以在class中def一个方法，例如
+这里面第一个“first”是class的attribute，以后可以通过Employee.first来获取这个值。第二个“first”是指对应的值会被设定为传入的在self后面叫first的参数。
+如果要创造出一个employee的instance，姓是李，名字大川，工资是10000，则可以：
+
+{% highlight python %}
+emp_1 = Employee('Dachuan', 'Li', 10000)
+{% endhighlight %}
+
+如果我们想要一个方法来得到员工的全名，可以在class中定义一个method，例如：
+
 {% highlight python %}
 class Employee:
-	def __init__(self, first, last, pay):
-		self.first = first
-		self.last = last
-		self.pay = pay
-		self.email = first + ’.’ + last + ‘@company.com’
 	def fullname(self):
 		return '{} {}'.format(self.first, self.last)
 {% endhighlight %}
 
-为什么经常见到def后面带一个self参数？
-因为在python执行class的instance的时候，
-如果不加，则在运行method的时候会报错：传入了一个参数（arguement）
-这个参数就是instance自己，所以在创建method的时候至少要接受一个self参数。
-至于为什么会传入一个自己的参数？因为python在执行的时候会转换为’Class.method(instance)’这样的形式运行，所以可以看到默认会传入instance。
+为什么经常见到def的方法后面带一个self参数？
+因为在python执行class的instance的时候，会默认传入一个参数，也就是instance自己。
+如果不加，那么说明这个方法不接受参数，但是默认穿了一个自己，所以运行method的时候会报错：传入了一个参数（arguement）
 
-### Class Variables
+至于为什么会传入一个自己的参数？
+因为python在执行这个instance的时候，会转换为’Employee.fullname(instance)’这样的形式运行。可以看到，这里将intance作为了一个参数。
+
+此时，执行下列代码就会得到员工1的全名，大川李
+{% highlight python %}
+print(emp_1.fullname())
+{% endhighlight %}
+
+
+## Class Variables
+
+上文的员工姓名和工资，都是员工自己才会有的值，那些就叫instance variables。如果有一些值是所有instance通用的，可以被看作是属于class的值，例如所有的员工，不管姓名公司如何，每次涨薪都是4%这么一个比例，那么可以这样：
 
 {% highlight python %}
 class Employee:
 	raise_amount = 1.04
+
+	def apply_raise(self):
+		self.pay = int(self.pay * raise_amount)
 {% endhighlight %}
-如果要在method中使用到class variables
-需要通过Class或者Instance
-为什么instance可以访问到class variables？
-因为python会先看instance是否包含这个变量（attribute），如果没有，则去看class或者继承的class
 
-如果执行emp_1.raise_amount，则会在emp1这个instance下创建一个raise_amount attribute，所以并不会更改class variable，别的人的raise amount还是旧的数值
-那么如何通过方法去变更class method？见下一章
+如果要在method中使用到class variables，则需要通过class或者instance。
+为什么instance可以访问到class variables？因为python会先看instance是否包含这个变量（attribute），如果没有，则去看class或者其继承的class。
 
-### Class Method & Static Method
-regular method自动把instance作为第一个变量
-class method自动把class作为第一个变量，例如：
+所以，如果执行emp_1.raise_amount = 1.10，则会在emp1这个instance下创建一个raise_amount attribute，并且设置为1.1（但愿我的工资涨幅要高过别的员工），所以并不会更改class variable，别的人的raise amount还是旧的数值。
+那么如何通过方法去变更class variables？见下一章
+
+## Class Method & Static Method
+
+就像regular method自动把instance作为第一个变量，class method自动把class作为第一个变量
+如果要创建class methods，需要加一个decorator（并且至少传入一个cls参数），如下：
+
 {% highlight python %}
-@classmethod
-def set_raise_amount(cls, amount):
-	pass
+class Employee:
+	@classmethod
+	def set_raise_amount(cls, amount):
+		raise_amount = 1.10
 {% endhighlight %}
-这样就可以通过这个method来更改class variables
-经常通过class method作为alternative constructor
-最后return这个instance就行
 
-regular method会自动传入self
-class method 会自动传入cls
-static method什么都不传
+如此一来，就可以通过"Employee.set_raise_amount()"这个method来更改"raise_amount"这个class variable
+实际应用中，经常通过class method作为alternative constructor，最后return这个instance。
+例如，如果要从一个string中创建一个员工，假如str的格式为“姓-名-工资”，那么：
 
-比如在上面的例子里面加一个“根据日期判断是不是weekday”
-如果method不用cls也不用self，那么他就应该是一个static method
+{% highlight python %}
+class Employee:
+	@classmethod
+	def from_string(cls, str):
+		first, last, pay = str.split('-')
+		return cls(first, last, pay)
+{% endhighlight %}
+
+static method则比较特别，不像regular method会自动传入self，class method会自动传入cls，static method什么都不传，通常用于一些和变量无关，但是逻辑上和整个class有关的method。比如在上面的例子里面加一个“根据日期判断是不是weekday”，就可以是一个static method。
 
 ### Inheritance
+
 在init中super().__inti__()，例如：
+
 {% highlight python %}
 class Manager(Employee):
 	def __init__(self, first, last, pay, employees=None):
@@ -89,3 +128,62 @@ class Manager(Employee):
 
 python内建了两个方法叫做 issubclass和isinstance
 可以用来判断某个variable/class是不是instance和subclass
+
+## Special Method（Magic/Dunder）
+
+“__str__”和“__repr__”都是为了让print出这个class的内容能易读一些，例如：
+
+{% highlight python %}
+class Employee:
+	def __repr__(self):
+		return “Employee(‘{}’,’{}’,{})”.format(self.first, self.last, self.pay)
+{% endhighlight %}
+
+在Python中print(1+2)，结果是3
+因为python会执行一个叫__add__的method，会将这两个数字相加。如果print(a+b)那么得到的会是ab
+为了举个例子，我们可以设定一个让两个员工相加的method。如果直接相加会报错，因为Python不知道怎么相加。我们指定了相加办法之后就可以相加了。
+{% highlight python %}
+class Employee:
+	def __add__(self, other):
+		return self.pay + other.pay
+{% endhighlight %}
+
+下面说一下if __name__ == ‘__main__’是做什么用的：
+在Python中，在刚开始运行的时候，会设定几个变量，其中文件名就会是“__main__”，如果有import的话，import的文件名就是自己的文件名。
+有了这个代码之后，就可以控制在import的文件里面，只有在main（）之外的代码会自动运行。
+
+## Property Decorators
+define一个method，但是access it like arrtibute。有三种类型：Getters， Setters和Deleters。
+Getters可以用于自动Update信息，比如员工邮箱是姓名+后缀，现在员工更改了新的姓，怎么同时更改企业邮箱呢？
+
+{% highlight python %}
+class Employee:
+	@property
+	def email(self):
+		return XXX
+{% endhighlight %}
+
+如果想要通过set一个全名来更改员工的姓和名，则需要一个setter，例如：
+
+{% highlight python %}
+class Employee:
+	@fullname.setter
+	def fullname(self, name):
+		first, last = name.split(' ')
+		self.first = first
+		self.last = last
+
+emp_1.fullname = "大川 李"
+{% endhighlight %}
+
+如果想要通过删除一个全名来更改员工的姓和名，则需要一个deleter，例如：
+
+{% highlight python %}
+class Employee:
+	@fullname.deleter
+	def fullname(self):
+		self.first = None
+		self.last = last
+
+del emp_1.fullname
+{% endhighlight %}
