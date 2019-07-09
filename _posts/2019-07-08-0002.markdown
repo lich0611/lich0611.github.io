@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Python怎么面对对象？"
+title:  "Python怎么面对对象编程？"
 date:   2019-07-08 20:33:49 +0800
 categories: jekyll update
 comments: true
@@ -19,7 +19,7 @@ comments: true
 * Property Decorators
 
 ---
-## Class & Instance
+# Class & Instance
 
 Class可以理解为，想要制作东西的蓝图，或者说模子。通过蓝图造出来的实际的东西就叫instance。
 
@@ -66,7 +66,7 @@ print(emp_1.fullname())
 {% endhighlight %}
 
 
-## Class Variables
+# Class Variables
 
 上文的员工姓名和工资，都是员工自己才会有的值，那些就叫instance variables。如果有一些值是所有instance通用的，可以被看作是属于class的值，例如所有的员工，不管姓名公司如何，每次涨薪都是4%这么一个比例，那么可以这样：
 
@@ -84,7 +84,7 @@ class Employee:
 所以，如果执行emp_1.raise_amount = 1.10，则会在emp1这个instance下创建一个raise_amount attribute，并且设置为1.1（但愿我的工资涨幅要高过别的员工），所以并不会更改class variable，别的人的raise amount还是旧的数值。
 那么如何通过方法去变更class variables？见下一章
 
-## Class Method & Static Method
+# Class Method & Static Method
 
 就像regular method自动把instance作为第一个变量，class method自动把class作为第一个变量
 如果要创建class methods，需要加一个decorator（并且至少传入一个cls参数），如下：
@@ -110,7 +110,7 @@ class Employee:
 
 static method则比较特别，不像regular method会自动传入self，class method会自动传入cls，static method什么都不传，通常用于一些和变量无关，但是逻辑上和整个class有关的method。比如在上面的例子里面加一个“根据日期判断是不是weekday”，就可以是一个static method。
 
-### Inheritance
+# Inheritance
 
 在init中super().__inti__()，例如：
 
@@ -129,7 +129,7 @@ class Manager(Employee):
 python内建了两个方法叫做 issubclass和isinstance
 可以用来判断某个variable/class是不是instance和subclass
 
-## Special Method（Magic/Dunder）
+# Special Method（Magic/Dunder）
 
 “__str__”和“__repr__”都是为了让print出这个class的内容能易读一些，例如：
 
@@ -153,7 +153,7 @@ class Employee:
 在Python中，在刚开始运行的时候，会设定几个变量，其中文件名就会是“__main__”，如果有import的话，import的文件名就是自己的文件名。
 有了这个代码之后，就可以控制在import的文件里面，只有在main（）之外的代码会自动运行。
 
-## Property Decorators
+# Property Decorators
 define一个method，但是access it like arrtibute。有三种类型：Getters， Setters和Deleters。
 Getters可以用于自动Update信息，比如员工邮箱是姓名+后缀，现在员工更改了新的姓，怎么同时更改企业邮箱呢？
 

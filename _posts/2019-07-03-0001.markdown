@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "第一篇日志"
+title:  "快速搭建自己的博客"
 date:   2019-07-02 13:51:49 +0800
 categories: jekyll update
 comments: true
