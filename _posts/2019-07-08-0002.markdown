@@ -35,7 +35,7 @@ class Employee:
 		self.first = first
 		self.last = last
 		self.pay = pay
-		self.email = first + ’.’ + last + ‘@company.com’
+		self.email = first + '.' + last + '@company.com'
 {% endhighlight %}
 
 这里面第一个“first”是class的attribute，以后可以通过Employee.first来获取这个值。第二个“first”是指对应的值会被设定为传入的在self后面叫first的参数。
@@ -136,12 +136,13 @@ python内建了两个方法叫做 issubclass和isinstance
 {% highlight python %}
 class Employee:
 	def __repr__(self):
-		return “Employee(‘{}’,’{}’,{})”.format(self.first, self.last, self.pay)
+		return "Employee('{}','{}',{})".format(self.first, self.last, self.pay)
 {% endhighlight %}
 
 在Python中print(1+2)，结果是3
 因为python会执行一个叫__add__的method，会将这两个数字相加。如果print(a+b)那么得到的会是ab
 为了举个例子，我们可以设定一个让两个员工相加的method。如果直接相加会报错，因为Python不知道怎么相加。我们指定了相加办法之后就可以相加了。
+
 {% highlight python %}
 class Employee:
 	def __add__(self, other):
