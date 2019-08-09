@@ -5,7 +5,7 @@ date:   2019-07-09 20:33:49 +0800
 categories: jekyll update
 comments: true
 ---
-![标题图](/assets/image/0003_0.png)
+![标题图](/assets/image/0003_0.jpg)
 
 我在刚上任再惠的产品经理，与前任产品经理交接时，了解到“一线运营要写日志”的需求，而且设计图，文档都齐全。万事俱备，只欠开发。
 
